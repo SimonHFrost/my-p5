@@ -1,26 +1,16 @@
-var xoff = 0.0;
-var xincrement = 0.01;
-
 const WIDTH = 800;
 const HEIGHT = 600;
+let GLOBAL_RANDOM_POINT = [Math.random() * WIDTH, Math.random() * HEIGHT];
 
-function setup() {
-  createCanvas(WIDTH, HEIGHT);
-  background(0);
-  noStroke();
+lineExampleSetup = function() {
+  GLOBAL_RANDOM_POINT = [Math.random() * WIDTH, Math.random() * HEIGHT];
+  setInterval(function() {
+    GLOBAL_RANDOM_POINT = [Math.random() * WIDTH, Math.random() * HEIGHT];
+  }, 500);
 }
 
-var GLOBAL_RANDOM_POINT = [Math.random() * WIDTH, Math.random() * HEIGHT];
-var GLOBAL_COLOR = Math.random() * 100;
-
-setInterval(function() {
-  GLOBAL_RANDOM_POINT = [Math.random() * WIDTH, Math.random() * HEIGHT];
-}, 500);
-
-function draw() {
-  noFill();
-
-  stroke(150 + 105 * Math.random(), GLOBAL_COLOR);
+lineExampleDraw = function() {
+  stroke(150 + 105 * Math.random());
   strokeWeight(Math.random() * 2);
 
   const RANDOM_POINT = [50 - 100 * Math.random(), 50 - 100 * Math.random()];
@@ -28,4 +18,16 @@ function draw() {
   const fuzzinessY = 20 * Math.random();
 
   line(RANDOM_POINT[0], RANDOM_POINT[1], WIDTH + fuzzinessX + GLOBAL_RANDOM_POINT[0], HEIGHT + fuzzinessY + GLOBAL_RANDOM_POINT[1]);
+};
+
+function setup() {
+  createCanvas(WIDTH, HEIGHT);
+  background(0);
+  noStroke();
+}
+
+lineExampleSetup();
+
+function draw() {
+  lineExampleDraw();
 }
