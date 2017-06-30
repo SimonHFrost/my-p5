@@ -1,15 +1,15 @@
 const WIDTH = 800;
 const HEIGHT = 600;
-let GLOBAL_RANDOM_POINT = [Math.random() * WIDTH, Math.random() * HEIGHT];
-let MIDDLE = [WIDTH / 2, HEIGHT / 2];
+let globalRandomPoint = [Math.random() * WIDTH, Math.random() * HEIGHT];
+const MIDDLE = [WIDTH / 2, HEIGHT / 2];
 
-function setup() {
+var setup = function() {
   createCanvas(WIDTH, HEIGHT);
   background(0);
   noStroke();
 }
 
-function draw() {
+var draw = function() {
   translate(MIDDLE[0], MIDDLE[1]);
   stroke(100, 100, 100);
   beginShape();
