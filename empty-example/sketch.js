@@ -1,5 +1,5 @@
-const WIDTH = 800;
-const HEIGHT = 600;
+const WIDTH = 500;
+const HEIGHT = 500;
 let globalRandomPoint = [Math.random() * WIDTH, Math.random() * HEIGHT];
 const MIDDLE = [WIDTH / 2, HEIGHT / 2];
 
@@ -9,21 +9,28 @@ var setup = function() {
   noStroke();
 }
 
+var getSomeFuzziness = function() {
+  return Math.random() * 30 - 15;
+}
+
+var counter = WIDTH/2 + 50; // Add a little padding
 var draw = function() {
   translate(MIDDLE[0], MIDDLE[1]);
-  stroke(100, 100, 100);
+
+  if (counter > 10) {
+    counter--;
+  } else {
+    return;
+  }
+
+  stroke(counter + 50);
   beginShape();
+
   // Exterior part of shape, clockwise winding
-  vertex(-40, -40);
-  vertex(40, -40);
-  vertex(40, 40);
-  vertex(-40, 40);
-  // Interior part of shape, counter-clockwise winding
-  beginContour();
-  vertex(-20, -20);
-  vertex(-20, 20);
-  vertex(20, 20);
-  vertex(20, -20);
-  endContour();
+  vertex(-counter + getSomeFuzziness(), -counter + getSomeFuzziness());
+  vertex(counter + getSomeFuzziness(), -counter + getSomeFuzziness());
+  vertex(counter + getSomeFuzziness(), counter + getSomeFuzziness());
+  vertex(-counter + getSomeFuzziness(), counter + getSomeFuzziness());
+
   endShape(CLOSE);
 }
