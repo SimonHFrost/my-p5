@@ -6,7 +6,7 @@ var current = 0;
 var next = 25;
 
 var verticalPosition = true;
-var strokeWeightValue = 1;
+var strokeWeightValue = 2;
 
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
@@ -25,7 +25,7 @@ var draw = function() {
     bezier(current, 50, current, 0, next, 0, next, 50);
   }
 
-  strokeWeightValue += 0.5;
+  strokeWeightValue += 0.3;
   strokeWeight(strokeWeightValue);
 
   verticalPosition = !verticalPosition;
