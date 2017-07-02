@@ -11,7 +11,7 @@ var setup = function() {
 }
 
 var current = 0;
-var next = 50;
+var next = 25;
 
 var verticalPosition = true;
 
@@ -26,8 +26,8 @@ var draw = function() {
 
   verticalPosition = !verticalPosition;
 
-  current += 50;
-  next += 50;
+  current += 25;
+  next += 25;
 
   endShape();
 }
