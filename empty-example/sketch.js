@@ -10,12 +10,21 @@ var setup = function() {
   strokeWeight(1);
 }
 
+var current = 0;
+var next = 50;
+
+var verticalPosition = true;
+
 var draw = function() {
   beginShape();
 
-  var current = 0;
-  var next = 50;
-  bezier(current, 0, current, 50, next, 50, next, 0);
+  if (!verticalPosition) {
+    bezier(current, 0 + 50, current, 50 + 50, next, 50 + 50, next, 0 + 50);
+  } else {
+    bezier(current, 50, current, 0, next, 0, next, 50);
+  }
+
+  verticalPosition = !verticalPosition;
 
   current += 50;
   next += 50;
