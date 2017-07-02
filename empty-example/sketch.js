@@ -2,18 +2,19 @@ const WIDTH = 800;
 const HEIGHT = 600;
 const MIDDLE = [WIDTH / 2, HEIGHT / 2];
 
+var current = 0;
+var next = 25;
+
+var verticalPosition = true;
+var strokeWeightValue = 1;
+
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
   background(0);
   noFill();
   stroke(255);
-  strokeWeight(1);
+  strokeWeight(strokeWeightValue);
 }
-
-var current = 0;
-var next = 25;
-
-var verticalPosition = true;
 
 var draw = function() {
   beginShape();
@@ -23,6 +24,9 @@ var draw = function() {
   } else {
     bezier(current, 50, current, 0, next, 0, next, 50);
   }
+
+  strokeWeightValue += 0.5;
+  strokeWeight(strokeWeightValue);
 
   verticalPosition = !verticalPosition;
 
