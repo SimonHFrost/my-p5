@@ -1,37 +1,24 @@
 const WIDTH = 800;
 const HEIGHT = 600;
-const MIDDLE = [WIDTH / 2, HEIGHT / 2];
 
-var current = 0;
-var next = 25;
-
-var verticalPosition = true;
-var strokeWeightValue = 2;
+const GRID_SIZE = 25;
 
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
   background(0);
   noFill();
   stroke(255);
-  strokeWeight(strokeWeightValue);
+  strokeWeight(1);
 }
 
 var draw = function() {
-  beginShape();
+  // NOTE: Offset by 1 so there's padding at the side of the screen
+  for (let x = 1; x < 7; x++) {
+    for (let y = 1; y < 7; y++) {
+      const first = [x * GRID_SIZE, y * GRID_SIZE]
+      const second = [first[0] + 10, first[1] + 10];
 
-  if (!verticalPosition) {
-    bezier(current, 0 + 50, current, 50 + 50, next, 50 + 50, next, 0 + 50);
-  } else {
-    bezier(current, 50, current, 0, next, 0, next, 50);
+      line(first[0], first[1], second[0], second[1]);
+    }
   }
-
-  strokeWeightValue += 0.3;
-  strokeWeight(strokeWeightValue);
-
-  verticalPosition = !verticalPosition;
-
-  current += 25;
-  next += 25;
-
-  endShape();
 }
