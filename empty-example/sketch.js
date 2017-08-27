@@ -31,4 +31,12 @@ var draw = function() {
       line(first[0], first[1], second[0], second[1]);
     }
   }
+
+  testRotation();
+}
+
+var testRotation = () => {
+  rotate(-45);
+  translate(300, 300);
+  rect(0, 0, 1, 20);
 }
