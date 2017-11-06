@@ -1,8 +1,10 @@
 const WIDTH = 800;
 const HEIGHT = 600;
 
-const RECT_SIZE_X = 100;
-const RECT_SIZE_Y = 50;
+const SPACING = 50;
+
+const RECT_SIZE_X = 25;
+const RECT_SIZE_Y = 5;
 
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
@@ -25,9 +27,6 @@ var drawRectangle = (posX, posY, angle) => {
 }
 
 var draw = function() {
-  const SPACING = 100;
-
-  // offset
   translate(SPACING, SPACING);
 
   for (let x = 0; x < 5; x++) {
