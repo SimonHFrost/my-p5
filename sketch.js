@@ -16,16 +16,16 @@ var setup = function() {
   strokeCap(SQUARE);
 }
 
-var drawRectangle = (posX, posY) => {
+var drawRectangle = (posX, posY, angle) => {
   push();
   translate(posX, posY);
-  rotate(45);
+  rotate(angle);
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
   pop();
 }
 
 var draw = function() {
-  drawRectangle(200, 200);
-  drawRectangle(100, 300);
-  drawRectangle(300, 100);
+  drawRectangle(200, 200, 45);
+  drawRectangle(100, 300, 45);
+  drawRectangle(300, 100, 45);
 }
