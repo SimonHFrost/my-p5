@@ -15,28 +15,9 @@ var setup = function() {
 }
 
 var draw = function() {
-  // NOTE: Offset by 1 so there's padding at the side of the screen
-  for (let x = 1; x < 11; x++) {
-    for (let y = 1; y < 11; y++) {
-      const first = [x * GRID_SIZE, y * GRID_SIZE]
+  // x, y, w, h
+  rect(80, 60, 55, 55);
 
-      if (x === TARGET[0] && y === TARGET[1]) {
-        // NOTE: Offset by half the distance of the line (5) kind of hacky...
-        rect(first[0] + 2.5, first[1] + 2.5, 5, 5);
-        continue;
-      }
-
-      const second = [first[0] + 10, first[1] + 10];
-
-      line(first[0], first[1], second[0], second[1]);
-    }
-  }
-
-  testRotation();
-}
-
-var testRotation = () => {
-  rotate(-45);
-  translate(300, 300);
-  rect(0, 0, 1, 20);
+  // x1, y1, x2, y2, x3, y3, x4, y4
+  bezier(85, 20, 10, 10, 90, 90, 15, 80);
 }
