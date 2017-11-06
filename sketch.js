@@ -29,8 +29,8 @@ var drawRectangle = (posX, posY, angle) => {
 var draw = function() {
   translate(SPACING, SPACING);
 
-  for (let x = 0; x < 5; x++) {
-    for (let y = 0; y < 5; y++) {
+  for (let x = 0; x < 15; x++) {
+    for (let y = 0; y < 11; y++) {
       drawRectangle(x * SPACING, y * SPACING, 45);
     }
   }
