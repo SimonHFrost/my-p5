@@ -11,7 +11,7 @@ var setup = function() {
   background(0);
   fill(255);
 
-  angleMode(DEGREES);
+  angleMode(RADIANS);
 
   stroke(255);
   strokeWeight(1);
@@ -27,16 +27,13 @@ var drawRectangle = (posX, posY, angle) => {
 }
 
 var draw = function() {
-  translate(SPACING, SPACING);
-
   const targetX = 3;
   const targetY = 5;
 
-  for (let x = 0; x < 31; x++) {
-    for (let y = 0; y < 23; y++) {
-      if (!(x === targetX && y === targetY)) {
-        drawRectangle(x * SPACING, y * SPACING, 45);
-      }
+  for (let x = 1; x < 32; x++) {
+    for (let y = 1; y < 24; y++) {
+      const angle = Math.atan(x - targetX/y - targetY);
+      drawRectangle(x * SPACING, y * SPACING, angle);
     }
   }
 }
