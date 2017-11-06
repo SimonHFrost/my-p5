@@ -14,7 +14,21 @@ var setup = function() {
 }
 
 var draw = function() {
+  push();
   translate(200, 200);
   rotate(45);
   rect(-50, -25, 100, 50);
+  pop();
+
+  push();
+  translate(100, 300);
+  rotate(45);
+  rect(-50, -25, 100, 50);
+  pop();
+
+  push();
+  translate(300, 100);
+  rotate(45);
+  rect(-50, -25, 100, 50);
+  pop();
 }
