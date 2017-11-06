@@ -9,15 +9,16 @@ var setup = function() {
   background(0);
   fill(255);
 
+  angleMode(DEGREES);
+
   stroke(255);
   strokeWeight(1);
   strokeCap(SQUARE);
 }
 
 var draw = function() {
-  // x, y, w, h
-  rect(80, 60, 55, 55);
+  rotate(45);
 
-  // x1, y1, x2, y2, x3, y3, x4, y4
-  bezier(85, 20, 10, 10, 90, 90, 15, 80);
+  // x, y, w, h
+  rect(0, 0, 100, 50);
 }
