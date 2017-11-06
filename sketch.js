@@ -1,9 +1,6 @@
 const WIDTH = 800;
 const HEIGHT = 600;
 
-const GRID_SIZE = 25;
-const TARGET = [2, 2];
-
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
   background(0);
@@ -17,8 +14,7 @@ var setup = function() {
 }
 
 var draw = function() {
+  translate(200, 200);
   rotate(45);
-
-  // x, y, w, h
-  rect(0, 0, 100, 50);
+  rect(-50, -25, 100, 50);
 }
