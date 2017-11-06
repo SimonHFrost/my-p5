@@ -25,7 +25,12 @@ var drawRectangle = (posX, posY, angle) => {
 }
 
 var draw = function() {
-  drawRectangle(200, 200, 45);
-  drawRectangle(100, 300, 45);
-  drawRectangle(300, 100, 45);
+  // offset
+  translate(100, 100);
+
+  for (let x = 0; x < 5; x++) {
+    for (let y = 0; y < 5; y++) {
+      drawRectangle(x * 100, y * 100, 45);
+    }
+  }
 }
