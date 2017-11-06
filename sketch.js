@@ -1,6 +1,9 @@
 const WIDTH = 800;
 const HEIGHT = 600;
 
+const RECT_SIZE_X = 100;
+const RECT_SIZE_Y = 50;
+
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
   background(0);
@@ -13,22 +16,16 @@ var setup = function() {
   strokeCap(SQUARE);
 }
 
+var drawRectangle = (posX, posY) => {
+  push();
+  translate(posX, posY);
+  rotate(45);
+  rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
+  pop();
+}
+
 var draw = function() {
-  push();
-  translate(200, 200);
-  rotate(45);
-  rect(-50, -25, 100, 50);
-  pop();
-
-  push();
-  translate(100, 300);
-  rotate(45);
-  rect(-50, -25, 100, 50);
-  pop();
-
-  push();
-  translate(300, 100);
-  rotate(45);
-  rect(-50, -25, 100, 50);
-  pop();
+  drawRectangle(200, 200);
+  drawRectangle(100, 300);
+  drawRectangle(300, 100);
 }
