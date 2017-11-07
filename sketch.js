@@ -1,10 +1,10 @@
 const WIDTH = 800;
 const HEIGHT = 600;
 
-const SPACING = 10;
+const SPACING = 15;
 
-const RECT_SIZE_X = 5;
-const RECT_SIZE_Y = 5;
+const RECT_SIZE_X = 10;
+const RECT_SIZE_Y = 10;
 
 const CIRCLE_CENTER_X = 20;
 const CIRCLE_CENTER_Y = 20;
@@ -24,10 +24,32 @@ var setup = function() {
   noLoop();
 }
 
+var drawDropShadow = (posX, posY) => {
+  push();
+
+  stroke(150);
+  fill(150);
+
+  const distance = 3;
+
+  const angleAway = Math.atan((posY - CIRCLE_CENTER_Y / posX - CIRCLE_CENTER_X));
+
+  const x = Math.sin(angleAway) * distance;
+  const y = Math.cos(angleAway) * distance;
+
+  translate(x, y);
+  console.log('translating', angleAway * 360 - 180, x, y);
+
+  rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
+
+  pop();
+}
+
 var drawRectangle = (posX, posY, angle) => {
   push();
-  translate(posX, posY);
+  translate(posX * SPACING, posY * SPACING);
   rotate(angle);
+  drawDropShadow(posX, posY, angle);
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
   pop();
 }
@@ -40,7 +62,7 @@ var draw = function() {
   for (let x = 1; x <= 100; x++) {
     for (let y = 1; y <= 100; y++) {
       if (isInCircle(x, y)) {
-        drawRectangle(x * SPACING, y * SPACING, Math.random() * 360);
+        drawRectangle(x, y, 0);
       }
     }
   }
