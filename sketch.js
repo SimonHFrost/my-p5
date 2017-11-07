@@ -1,7 +1,7 @@
 const WIDTH = 800;
 const HEIGHT = 600;
 
-const SPACING = 20;
+const SPACING = 10;
 
 const RECT_SIZE_X = 5;
 const RECT_SIZE_Y = 5;
