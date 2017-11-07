@@ -27,13 +27,16 @@ var drawRectangle = (posX, posY, angle) => {
 }
 
 var draw = function() {
-  const targetX = 3;
-  const targetY = 5;
+  const targetX = 20;
+  const targetY = 7;
 
   for (let x = 1; x < 32; x++) {
     for (let y = 1; y < 24; y++) {
-      const angle = Math.atan(x - targetX/y - targetY);
-      drawRectangle(x * SPACING, y * SPACING, angle);
+
+      if (x !== targetX || y !== targetY) {
+        const angle = Math.atan2(targetY - y, targetX - x);
+        drawRectangle(x * SPACING, y * SPACING, angle);
+      }
     }
   }
 }
