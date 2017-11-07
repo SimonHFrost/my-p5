@@ -11,7 +11,6 @@ const SQUARE_SIZE = 4;
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
   background(0);
-  fill(255);
 
   angleMode(RADIANS);
 
