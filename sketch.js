@@ -32,13 +32,12 @@ var drawDropShadow = (posX, posY) => {
 
   const distance = 3;
 
-  const angleAway = Math.atan((posY - CIRCLE_CENTER_Y / posX - CIRCLE_CENTER_X));
+  const angleAway = Math.atan(posY - CIRCLE_CENTER_Y / posX - CIRCLE_CENTER_X);
 
   const x = Math.sin(angleAway) * distance;
   const y = Math.cos(angleAway) * distance;
 
   translate(x, y);
-  console.log('translating', angleAway * 360 - 180, x, y);
 
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
 
