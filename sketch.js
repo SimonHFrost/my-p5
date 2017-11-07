@@ -24,6 +24,10 @@ var setup = function() {
   noLoop();
 }
 
+var toDegrees = (radians) => {
+  return radians * 180 / Math.PI;
+}
+
 var drawDropShadow = (posX, posY) => {
   push();
 
@@ -36,6 +40,8 @@ var drawDropShadow = (posX, posY) => {
 
   const x = Math.sin(angleAway) * distance;
   const y = Math.cos(angleAway) * distance;
+
+  console.log(toDegrees(angleAway));
 
   translate(x, y);
 
