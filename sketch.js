@@ -1,10 +1,10 @@
 const WIDTH = 800;
 const HEIGHT = 600;
 
-const SPACING = 25;
+const SPACING = 20;
 
-const RECT_SIZE_X = 15;
-const RECT_SIZE_Y = 15;
+const RECT_SIZE_X = 5;
+const RECT_SIZE_Y = 5;
 
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
@@ -29,9 +29,9 @@ var drawRectangle = (posX, posY, angle) => {
 }
 
 var draw = function() {
-  for (let x = 1; x <= 10; x++) {
-    for (let y = 1; y <= 10; y++) {
-      drawRectangle(x * 50, y * 50, Math.random() * 360);
+  for (let x = 1; x <= 20; x++) {
+    for (let y = 1; y <= 20; y++) {
+      drawRectangle(x * SPACING, y * SPACING, Math.random() * 360);
     }
   }
 }
