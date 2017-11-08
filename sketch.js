@@ -28,8 +28,8 @@ var toDegrees = (radians) => {
   return radians * 180 / Math.PI;
 }
 
-var distanceBetweenTwoPoints = (posX, posY, posX2, posY2) => {
-  return Math.sqrt((posX2 - posX) ** 2 + (posY2 - posY) ** 2);
+var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
+  return Math.sqrt((bx - ax) ** 2 + (by - ay) ** 2);
 }
 
 var getDropShadowCoordinates = (posX, posY) => {
@@ -49,8 +49,6 @@ var drawDropShadow = (posX, posY) => {
 
   const coordinates = getDropShadowCoordinates(posX, posY);
   translate(coordinates.x, coordinates.y);
-
-  console.log(distanceBetweenTwoPoints(posX, posY, coordinates.x, coordinates.y));
 
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
 
