@@ -28,22 +28,23 @@ var toDegrees = (radians) => {
   return radians * 180 / Math.PI;
 }
 
+var getDropShadowCoordinates = (posX, posY) => {
+  const dist = 5;
+  let angle = Math.atan((CIRCLE_CENTER_X - posX) / (CIRCLE_CENTER_Y - posY));
+  return {
+    x: posX + dist * Math.sin(angle),
+    y: posY + dist * Math.cos(angle),
+  }
+}
+
 var drawDropShadow = (posX, posY) => {
   push();
 
   stroke(150);
   fill(150);
 
-  const distance = 3;
-
-  const angleAway = Math.atan(posY - CIRCLE_CENTER_Y / posX - CIRCLE_CENTER_X);
-
-  const x = Math.sin(angleAway) * distance;
-  const y = Math.cos(angleAway) * distance;
-
-  console.log(toDegrees(angleAway));
-
-  translate(x, y);
+  const coordinates = getDropShadowCoordinates(posX, posY);
+  translate(coordinates.x, coordinates.y);
 
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
 
