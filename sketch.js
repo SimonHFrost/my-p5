@@ -33,11 +33,11 @@ var distanceBetweenTwoPoints = (posX, posY, posX2, posY2) => {
 }
 
 var getDropShadowCoordinates = (posX, posY) => {
-  const dist = 5;
+  const dist = 3;
   let angle = Math.atan((CIRCLE_CENTER_X - posX) / (CIRCLE_CENTER_Y - posY));
   return {
-    x: posX + dist * Math.sin(angle),
-    y: posY + dist * Math.cos(angle),
+    x: dist * Math.sin(angle),
+    y: dist * Math.cos(angle),
   }
 }
 
