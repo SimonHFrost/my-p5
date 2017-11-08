@@ -1,7 +1,7 @@
-const WIDTH = 800;
-const HEIGHT = 600;
+const WIDTH = 1600;
+const HEIGHT = 800;
 
-const SPACING = 15;
+const SPACING = 20;
 
 const RECT_SIZE_X = 10;
 const RECT_SIZE_Y = 10;
@@ -33,8 +33,9 @@ var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
 }
 
 var getDropShadowCoordinates = (posX, posY) => {
-  const dist = 3;
-  let angle = Math.atan((CIRCLE_CENTER_X - posX) / (CIRCLE_CENTER_Y - posY));
+  // FIXME: Should be able to do this without using negative...
+  const dist = -3;
+  let angle = Math.atan2((CIRCLE_CENTER_X - posX), (CIRCLE_CENTER_Y - posY));
   return {
     x: dist * Math.sin(angle),
     y: dist * Math.cos(angle),
@@ -48,6 +49,7 @@ var drawDropShadow = (posX, posY) => {
   fill(150);
 
   const coordinates = getDropShadowCoordinates(posX, posY);
+  translate(posX * SPACING, posY * SPACING);
   translate(coordinates.x, coordinates.y);
 
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
@@ -56,10 +58,11 @@ var drawDropShadow = (posX, posY) => {
 }
 
 var drawRectangle = (posX, posY, angle) => {
+  drawDropShadow(posX, posY, angle);
+
   push();
   translate(posX * SPACING, posY * SPACING);
   rotate(angle);
-  drawDropShadow(posX, posY, angle);
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
   pop();
 }
