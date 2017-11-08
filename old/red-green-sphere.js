@@ -1,4 +1,4 @@
-const WIDTH = 1600;
+const WIDTH = 800;
 const HEIGHT = 800;
 
 const SPACING = 20;
