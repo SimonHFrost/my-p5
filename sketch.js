@@ -16,8 +16,9 @@ var setup = function() {
 
   angleMode(DEGREES);
 
-  stroke('#00FF00');
-  fill('#00FF00');
+  stroke('#FF8888');
+  fill('#FF8888');
+
   strokeWeight(1);
   strokeCap(SQUARE);
 
@@ -34,7 +35,7 @@ var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
 
 var getDropShadowCoordinates = (posX, posY) => {
   // FIXME: Should be able to do this without using negative...
-  const dist = -10;
+  const dist = -5;
   let angle = Math.atan2((CIRCLE_CENTER_X - posX), (CIRCLE_CENTER_Y - posY));
   return {
     x: dist * Math.sin(angle),
@@ -45,8 +46,8 @@ var getDropShadowCoordinates = (posX, posY) => {
 var drawDropShadow = (posX, posY) => {
   push();
 
-  stroke('#FF0000');
-  fill('#FF0000');
+  stroke('#EECCCC');
+  fill('#EECCCC');
 
   const coordinates = getDropShadowCoordinates(posX, posY);
   translate(posX * SPACING, posY * SPACING);
