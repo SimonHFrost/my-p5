@@ -16,8 +16,8 @@ var setup = function() {
 
   angleMode(DEGREES);
 
-  stroke('#FF8888');
-  fill('#FF8888');
+  stroke('#000000');
+  fill('#000000');
 
   strokeWeight(1);
   strokeCap(SQUARE);
