@@ -16,8 +16,8 @@ var setup = function() {
 
   angleMode(DEGREES);
 
-  stroke('#000000');
-  fill('#000000');
+  stroke('#FFAAAA');
+  fill('#FFAAAA');
 
   strokeWeight(1);
   strokeCap(SQUARE);
@@ -45,7 +45,7 @@ var getDropShadowCoordinates = (posX, posY) => {
   }
 }
 
-var drawDropShadow = (posX, posY) => {
+var drawDropShadow = (posX, posY, angle) => {
   push();
 
   stroke('#EECCCC');
@@ -54,6 +54,7 @@ var drawDropShadow = (posX, posY) => {
   const coordinates = getDropShadowCoordinates(posX, posY);
   translate(posX * SPACING, posY * SPACING);
   translate(coordinates.x, coordinates.y);
+  rotate(angle);
 
   rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
 
@@ -78,7 +79,7 @@ var draw = function() {
   for (let x = 1; x <= 100; x++) {
     for (let y = 1; y <= 100; y++) {
       if (isInCircle(x, y)) {
-        drawRectangle(x, y, 0);
+        drawRectangle(x, y, Math.random() * 360);
       }
     }
   }
