@@ -34,8 +34,10 @@ var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
 }
 
 var getDropShadowCoordinates = (posX, posY) => {
-  // FIXME: Should be able to do this without using negative...
-  const dist = -5;
+  const distFromCenter = Math.sqrt((CIRCLE_CENTER_X - posX) ** 2 + (CIRCLE_CENTER_Y - posY) ** 2);
+  const percentageFromCenter = distFromCenter / 20;
+  const dist = percentageFromCenter * -10;
+
   let angle = Math.atan2((CIRCLE_CENTER_X - posX), (CIRCLE_CENTER_Y - posY));
   return {
     x: dist * Math.sin(angle),
