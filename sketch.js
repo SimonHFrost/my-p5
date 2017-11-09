@@ -1,10 +1,10 @@
-const WIDTH = 800;
-const HEIGHT = 800;
+const WIDTH = 600;
+const HEIGHT = 600;
 
-const SPACING = 20;
+const SPACING = 15;
 
-const RECT_SIZE_X = 10;
-const RECT_SIZE_Y = 10;
+const RECT_SIZE_X = 15;
+const RECT_SIZE_Y = 15;
 
 const CIRCLE_CENTER_X = 20;
 const CIRCLE_CENTER_Y = 20;
@@ -45,7 +45,7 @@ var getDropShadowCoordinates = (posX, posY) => {
   }
 }
 
-var drawDropShadow = (posX, posY, angle) => {
+var drawDropShadow = (posX, posY, angle, sizeX, sizeY) => {
   push();
 
   stroke('#EECCCC');
@@ -56,18 +56,22 @@ var drawDropShadow = (posX, posY, angle) => {
   translate(coordinates.x, coordinates.y);
   rotate(angle);
 
-  rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
+  rect(-(sizeX/2), -(sizeY/2), sizeX, sizeY);
 
   pop();
 }
 
 var drawRectangle = (posX, posY, angle) => {
-  drawDropShadow(posX, posY, angle);
+  const sizeX = RECT_SIZE_X * Math.random();
+  const sizeY = RECT_SIZE_Y * Math.random();
+
+  drawDropShadow(posX, posY, angle, sizeX, sizeY);
 
   push();
   translate(posX * SPACING, posY * SPACING);
   rotate(angle);
-  rect(-(RECT_SIZE_X/2), -(RECT_SIZE_Y/2), RECT_SIZE_X, RECT_SIZE_Y);
+
+  rect(-(sizeX/2), -(sizeY/2), sizeX, sizeY);
   pop();
 }
 
