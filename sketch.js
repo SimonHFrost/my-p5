@@ -3,8 +3,8 @@ const HEIGHT = 600;
 
 const SPACING = 15;
 
-const RECT_SIZE_X = 15;
-const RECT_SIZE_Y = 15;
+const RECT_SIZE_X = 10;
+const RECT_SIZE_Y = 10;
 
 const CIRCLE_CENTER_X = 20;
 const CIRCLE_CENTER_Y = 20;
@@ -62,8 +62,8 @@ var drawDropShadow = (posX, posY, angle, sizeX, sizeY) => {
 }
 
 var drawRectangle = (posX, posY, angle) => {
-  const sizeX = RECT_SIZE_X * Math.random();
-  const sizeY = RECT_SIZE_Y * Math.random();
+  const sizeX = 5 + RECT_SIZE_X * Math.random();
+  const sizeY = 5 + RECT_SIZE_Y * Math.random();
 
   drawDropShadow(posX, posY, angle, sizeX, sizeY);
 
