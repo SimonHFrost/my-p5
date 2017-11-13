@@ -25,14 +25,6 @@ var setup = function() {
   noLoop();
 }
 
-var toDegrees = (radians) => {
-  return radians * 180 / Math.PI;
-}
-
-var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
-  return Math.sqrt((bx - ax) ** 2 + (by - ay) ** 2);
-}
-
 var setColor = (posX, posY) => {
   var g = Math.round(posX / GRID_SIZE * 255);
   var b = Math.round(posY / GRID_SIZE * 255);
@@ -51,6 +43,8 @@ var setColor = (posX, posY) => {
 
 var drawSquare = (posX, posY, angle) => {
   const size = 5 + SQUARE_SIZE * Math.random();
+
+  drawSquareDropShadow(posX, posY, angle, size, size);
 
   push();
 
