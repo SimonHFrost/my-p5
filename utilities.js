@@ -1,5 +1,5 @@
-var shadowColor = '#000000';
-var shadowDistance = 1;
+var defaultShadowColor = '#000000';
+var defaultShadowDistance = 1;
 var shadowAngle = Math.PI / 4;
 
 var toDegrees = (radians) => {
@@ -10,21 +10,25 @@ var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
   return Math.sqrt((bx - ax) ** 2 + (by - ay) ** 2);
 }
 
-var getDropShadowCoordinates = (posX, posY) => {
+var getDropShadowCoordinates = (shadowAngle, distance) => {
   return {
-    x: -shadowDistance * shadowAngle,
-    y: -shadowDistance * shadowAngle,
+    x: -distance * shadowAngle,
+    y: -distance * shadowAngle,
   }
 }
 
-var drawSquareDropShadow = (posX, posY, angle, sizeX, sizeY) => {
+var drawSquareDropShadow = (posX, posY, angle, sizeX, sizeY, shadowColor, shadowDistance) => {
+  var color = shadowColor || defaultShadowColor;
+  var distance = shadowDistance || defaultShadowDistance;
+
   push();
 
-  stroke(shadowColor);
-  fill(shadowColor);
+  stroke(color);
+  fill(color);
 
-  const coordinates = getDropShadowCoordinates(posX, posY);
   translate(posX * SPACING, posY * SPACING);
+
+  const coordinates = getDropShadowCoordinates(shadowAngle, distance);
   translate(coordinates.x, coordinates.y);
   rotate(angle);
 

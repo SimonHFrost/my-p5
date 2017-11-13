@@ -44,7 +44,9 @@ var setColor = (posX, posY) => {
 var drawSquare = (posX, posY, angle) => {
   const size = 5 + SQUARE_SIZE * Math.random();
 
-  drawSquareDropShadow(posX, posY, angle, size, size);
+  drawSquareDropShadow(posX, posY, angle, size, size, '#AAA', 3);
+  drawSquareDropShadow(posX, posY, angle, size, size, '#555', 2);
+  drawSquareDropShadow(posX, posY, angle, size, size, '#000', 1);
 
   push();
 
@@ -64,7 +66,7 @@ var draw = function() {
   for (let x = 1; x <= GRID_SIZE; x++) {
     for (let y = 1; y <= GRID_SIZE; y++) {
       if (isInCircle(x, y)) {
-        drawSquare(x, y, Math.random() * 360);
+        drawSquare(x, y);
       }
     }
   }
