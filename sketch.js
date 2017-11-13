@@ -34,12 +34,17 @@ var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
 }
 
 var setColor = (posX, posY) => {
-  var g = Math.round(posX / GRID_SIZE * 99).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  var b = Math.round(posY / GRID_SIZE * 99).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+  var g = Math.round(posX / GRID_SIZE * 255);
+  var b = Math.round(posY / GRID_SIZE * 255);
+
+  // Convert to hex
+  g = Number(g).toString(16);
+  g = g.length === 1 ? '0' + g : g;
+  b = Number(b).toString(16);
+  b = b.length === 1 ? '0' + b : b;
 
   var color = '#FF' + g + b;
 
-  console.log(color);
   stroke(color);
   fill(color);
 }
