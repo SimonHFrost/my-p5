@@ -1,10 +1,10 @@
-const WIDTH = 600;
-const HEIGHT = 600;
+const WIDTH = 640;
+const HEIGHT = 640;
 
-const SPACING = 15;
+const SPACING = 25;
 
-const SQUARE_SIZE = 5;
-const GRID_SIZE = 40;
+const SQUARE_SIZE = 20;
+const GRID_SIZE = 21;
 
 const CIRCLE_CENTER_X = 20;
 const CIRCLE_CENTER_Y = 20;
@@ -41,33 +41,28 @@ var setColor = (posX, posY) => {
   fill(color);
 }
 
-var drawSquare = (posX, posY, angle) => {
-  const size = 5 + SQUARE_SIZE * Math.random();
-
-  drawSquareDropShadow(posX, posY, angle, size, size, '#AAA', 3);
-  drawSquareDropShadow(posX, posY, angle, size, size, '#555', 2);
-  drawSquareDropShadow(posX, posY, angle, size, size, '#000', 1);
-
+var drawSquare = (posX, posY, size) => {
   push();
 
   translate(posX * SPACING, posY * SPACING);
-  rotate(angle);
   setColor(posX, posY);
   rect(-(size/2), -(size/2), size, size);
 
   pop();
 }
 
-var isInCircle = (x, y) => {
-  return Math.sqrt((x - CIRCLE_CENTER_X) ** 2 + (y - CIRCLE_CENTER_Y) ** 2) < CIRCLE_RADIUS
-}
-
 var draw = function() {
-  for (let x = 1; x <= GRID_SIZE; x++) {
     for (let y = 1; y <= GRID_SIZE; y++) {
-      if (isInCircle(x, y)) {
-        drawSquare(x, y);
+      for (let x = 1; x <= GRID_SIZE / 3; x++) {
+        drawSquare(x, y, SQUARE_SIZE);
+      }
+
+      for (let x = 7; x <= 7 + GRID_SIZE / 3; x++) {
+        drawSquare(x, y, SQUARE_SIZE * 0.8);
+      }
+
+      for (let x = 14; x <= 14 + GRID_SIZE / 3; x++) {
+        drawSquare(x, y, SQUARE_SIZE * 0.6);
       }
     }
-  }
 }
