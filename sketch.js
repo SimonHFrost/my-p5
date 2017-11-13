@@ -1,5 +1,5 @@
-const WIDTH = 640;
-const HEIGHT = 640;
+const WIDTH = 550;
+const HEIGHT = 550;
 
 const SPACING = 25;
 
@@ -12,7 +12,7 @@ const CIRCLE_RADIUS = 20;
 
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
-  background('#FFFFFF');
+  background('#000');
 
   angleMode(DEGREES);
 
@@ -37,7 +37,7 @@ var setColor = (posX, posY) => {
 
   var color = '#FF' + g + b;
 
-  stroke(color);
+  stroke('#FFF');
   fill(color);
 }
 
@@ -57,11 +57,11 @@ var draw = function() {
         drawSquare(x, y, SQUARE_SIZE);
       }
 
-      for (let x = 7; x <= 7 + GRID_SIZE / 3; x++) {
+      for (let x = 8; x <= 7 + GRID_SIZE / 3; x++) {
         drawSquare(x, y, SQUARE_SIZE * 0.8);
       }
 
-      for (let x = 14; x <= 14 + GRID_SIZE / 3; x++) {
+      for (let x = 15; x <= 14 + GRID_SIZE / 3; x++) {
         drawSquare(x, y, SQUARE_SIZE * 0.6);
       }
     }
