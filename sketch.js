@@ -25,27 +25,19 @@ var setup = function() {
   noLoop();
 }
 
-var setColor = (posX, posY) => {
-  var g = Math.round(posX / GRID_SIZE * 255);
-  var b = Math.round(posY / GRID_SIZE * 255);
-
-  // Convert to hex
-  g = Number(g).toString(16);
-  g = g.length === 1 ? '0' + g : g;
-  b = Number(b).toString(16);
-  b = b.length === 1 ? '0' + b : b;
-
-  var color = '#FF' + g + b;
+var setColor = (colorBase, colorModifier) => {
+  var color = chroma(colorBase).set('hsl.h', 360 * colorModifier).hex();
+  console.log(colorBase, colorModifier, color);
 
   stroke('#FFF');
   fill(color);
 }
 
-var drawSquare = (posX, posY, size) => {
+var drawSquare = (posX, posY, size, colorBase, colorModifier) => {
   push();
 
   translate(posX * SPACING, posY * SPACING);
-  setColor(posX, posY);
+  setColor(colorBase, colorModifier);
   rect(-(size/2), -(size/2), size, size);
 
   pop();
@@ -53,16 +45,21 @@ var drawSquare = (posX, posY, size) => {
 
 var draw = function() {
     for (let y = 1; y <= GRID_SIZE; y++) {
+      var numberInGrid = GRID_SIZE + (GRID_SIZE / 3);
+
       for (let x = 1; x <= GRID_SIZE / 3; x++) {
-        drawSquare(x, y, SQUARE_SIZE);
+        var colorModifier = (x + y) / numberInGrid;
+        drawSquare(x, y, SQUARE_SIZE, '#ff5959', colorModifier);
       }
 
-      for (let x = 8; x <= 7 + GRID_SIZE / 3; x++) {
-        drawSquare(x, y, SQUARE_SIZE * 0.8);
+      for (let x = 1; x <= GRID_SIZE / 3; x++) {
+        var colorModifier = (x + y) / numberInGrid;
+        drawSquare(7 + x, y, SQUARE_SIZE * 0.8, '#64ff59', 120 + colorModifier);
       }
 
-      for (let x = 15; x <= 14 + GRID_SIZE / 3; x++) {
-        drawSquare(x, y, SQUARE_SIZE * 0.6);
+      for (let x = 1; x <= GRID_SIZE / 3; x++) {
+        var colorModifier = (x + y) / numberInGrid;
+        drawSquare(14 + x, y, SQUARE_SIZE * 0.6, '#59bbff', 240 + colorModifier);
       }
     }
 }
