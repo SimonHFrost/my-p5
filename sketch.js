@@ -3,8 +3,8 @@ const HEIGHT = 600;
 
 const SPACING = 15;
 
-const RECT_SIZE_X = 10;
-const RECT_SIZE_Y = 10;
+const SQUARE_SIZE = 5;
+const GRID_SIZE = 40;
 
 const CIRCLE_CENTER_X = 20;
 const CIRCLE_CENTER_Y = 20;
@@ -12,12 +12,12 @@ const CIRCLE_RADIUS = 20;
 
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
-  background(0);
+  background('#FFFFFF');
 
   angleMode(DEGREES);
 
-  stroke('#FFAAAA');
-  fill('#FFAAAA');
+  stroke('#000000');
+  fill('#000000');
 
   strokeWeight(1);
   strokeCap(SQUARE);
@@ -33,45 +33,27 @@ var distanceBetweenTwoPoints = (ax, ay, bx, by) => {
   return Math.sqrt((bx - ax) ** 2 + (by - ay) ** 2);
 }
 
-var getDropShadowCoordinates = (posX, posY) => {
-  const distFromCenter = Math.sqrt((CIRCLE_CENTER_X - posX) ** 2 + (CIRCLE_CENTER_Y - posY) ** 2);
-  const percentageFromCenter = distFromCenter / 20;
-  const dist = percentageFromCenter * -10;
+var setColor = (posX, posY) => {
+  var g = Math.round(posX / GRID_SIZE * 99).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+  var b = Math.round(posY / GRID_SIZE * 99).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 
-  let angle = Math.atan2((CIRCLE_CENTER_X - posX), (CIRCLE_CENTER_Y - posY));
-  return {
-    x: dist * Math.sin(angle),
-    y: dist * Math.cos(angle),
-  }
+  var color = '#FF' + g + b;
+
+  console.log(color);
+  stroke(color);
+  fill(color);
 }
 
-var drawDropShadow = (posX, posY, angle, sizeX, sizeY) => {
-  push();
-
-  stroke('#EECCCC');
-  fill('#EECCCC');
-
-  const coordinates = getDropShadowCoordinates(posX, posY);
-  translate(posX * SPACING, posY * SPACING);
-  translate(coordinates.x, coordinates.y);
-  rotate(angle);
-
-  rect(-(sizeX/2), -(sizeY/2), sizeX, sizeY);
-
-  pop();
-}
-
-var drawRectangle = (posX, posY, angle) => {
-  const sizeX = 5 + RECT_SIZE_X * Math.random();
-  const sizeY = 5 + RECT_SIZE_Y * Math.random();
-
-  drawDropShadow(posX, posY, angle, sizeX, sizeY);
+var drawSquare = (posX, posY, angle) => {
+  const size = 5 + SQUARE_SIZE * Math.random();
 
   push();
+
   translate(posX * SPACING, posY * SPACING);
   rotate(angle);
+  setColor(posX, posY);
+  rect(-(size/2), -(size/2), size, size);
 
-  rect(-(sizeX/2), -(sizeY/2), sizeX, sizeY);
   pop();
 }
 
@@ -80,10 +62,10 @@ var isInCircle = (x, y) => {
 }
 
 var draw = function() {
-  for (let x = 1; x <= 100; x++) {
-    for (let y = 1; y <= 100; y++) {
+  for (let x = 1; x <= GRID_SIZE; x++) {
+    for (let y = 1; y <= GRID_SIZE; y++) {
       if (isInCircle(x, y)) {
-        drawRectangle(x, y, Math.random() * 360);
+        drawSquare(x, y, Math.random() * 360);
       }
     }
   }
