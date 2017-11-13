@@ -26,10 +26,8 @@ var setup = function() {
 }
 
 var setColor = (colorBase, colorModifier) => {
-  var color = chroma(colorBase).set('hsl.h', 360 * colorModifier).hex();
-  console.log(colorBase, colorModifier, color);
+  var color = chroma(colorBase).set('hsl.h', colorModifier).hex();
 
-  stroke('#FFF');
   fill(color);
 }
 
@@ -48,18 +46,18 @@ var draw = function() {
       var numberInGrid = GRID_SIZE + (GRID_SIZE / 3);
 
       for (let x = 1; x <= GRID_SIZE / 3; x++) {
-        var colorModifier = (x + y) / numberInGrid;
-        drawSquare(x, y, SQUARE_SIZE, '#ff5959', colorModifier);
+        var colorModifier = (x + y) / numberInGrid / 2;
+        drawSquare(x, y, SQUARE_SIZE, '#ff9e9e', colorModifier * 360);
       }
 
       for (let x = 1; x <= GRID_SIZE / 3; x++) {
-        var colorModifier = (x + y) / numberInGrid;
-        drawSquare(7 + x, y, SQUARE_SIZE * 0.8, '#64ff59', 120 + colorModifier);
+        var colorModifier = (x + y) / numberInGrid / 2;
+        drawSquare(7 + x, y, SQUARE_SIZE * 0.8, '#9eff9f', 120 + colorModifier * 360);
       }
 
       for (let x = 1; x <= GRID_SIZE / 3; x++) {
-        var colorModifier = (x + y) / numberInGrid;
-        drawSquare(14 + x, y, SQUARE_SIZE * 0.6, '#59bbff', 240 + colorModifier);
+        var colorModifier = (x + y) / numberInGrid / 2;
+        drawSquare(14 + x, y, SQUARE_SIZE * 0.6, '#9eafff', 240 + colorModifier * 360);
       }
     }
 }
