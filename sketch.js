@@ -49,18 +49,20 @@ var draw = function() {
     for (let i = 0; i <= NUM_RIPPLES; i++) {
       const initialX = Math.random() * WIDTH;
       const initialY = Math.random() * HEIGHT;
-      const angle = Math.random() * 2 * Math.PI;
+      const initialAngle = Math.random() * 2 * Math.PI;
 
       let x = initialX;
       let y = initialY;
       let size = BASE_SIZE;
+      let angle = initialAngle;
+
       for (let j = 0; j < 5; j++) {
         x = x + Math.cos(angle) * JUMP_DISTANCE;
         y = y + Math.sin(angle) * JUMP_DISTANCE;
 
         drawCircle(x, y, size, 'white');
         size = size * 0.85;
-
+        angle = angle * 0.1;
       }
     }
 }
