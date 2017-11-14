@@ -62,7 +62,8 @@ var draw = function() {
 
         drawCircle(x, y, size, 'white');
         size = size * 0.85;
-        angle = angle * 0.1;
+        console.log(angle);
+        angle = angle - (angle * 0.1);
       }
     }
 }
