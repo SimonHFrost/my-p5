@@ -3,10 +3,13 @@ const HEIGHT = 600;
 
 const NUM_RIPPLES = 10;
 const JUMP_DISTANCE = 50;
+const BASE_SIZE = 50;
+
+const BACKGROUND_COLOR = '#AAAAFF';
 
 var setup = function() {
   createCanvas(WIDTH, HEIGHT);
-  background('#AAAAFF');
+  background(BACKGROUND_COLOR);
 
   angleMode(RADIANS);
 
@@ -25,13 +28,19 @@ var setColor = (colorBase, colorModifier) => {
   fill(color);
 }
 
-var drawSquare = (posX, posY, size, color) => {
+var drawCircle = (posX, posY, size, color) => {
+  const smallerSize = size - 5;
+
   push();
 
   translate(posX, posY);
   stroke(color);
   fill(color);
   ellipse(-(size/2), -(size/2), size, size);
+
+  stroke(BACKGROUND_COLOR);
+  fill(BACKGROUND_COLOR);
+  ellipse(-(size/2), -(size/2), smallerSize, smallerSize);
 
   pop();
 }
@@ -44,10 +53,14 @@ var draw = function() {
 
       let x = initialX;
       let y = initialY;
+      let size = BASE_SIZE;
       for (let j = 0; j < 5; j++) {
         x = x + Math.cos(angle) * JUMP_DISTANCE;
         y = y + Math.sin(angle) * JUMP_DISTANCE;
-        drawSquare(x, y, 50, 'white');
+
+        drawCircle(x, y, size, 'white');
+        size = size * 0.85;
+
       }
     }
 }
